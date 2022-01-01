@@ -1,16 +1,19 @@
-# pocket_dictionary
+# Pocket Dictionary 📖
 
-A new Flutter project.
+A simple flutter app where we can get the meaning, pronunciation, and Synonym for an English word. Currently, this app only supports English.
 
-## Getting Started
+### What Does The APP Do Other Than Search
+- Displays recently searched words
+- Users can bookmark particular search results
 
-This project is a starting point for a Flutter application.
+## Technologies
+### Architecture
+- **Test-driven-design**
+- **MVC**
 
-A few resources to get you started if this is your first Flutter project:
+### Front-end
+- **Flutter SDK**
+- **GetX (navigation service,state managment, dependencies manager, ui components)**
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Back-end
+- **Dictionary API** 
