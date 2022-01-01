@@ -1,4 +1,4 @@
-# Pocket Dictionary 📖
+# [WIP] Pocket Dictionary 📖
 
 A simple flutter app where we can get the meaning, pronunciation, and Synonym for an English word. Currently, this app only supports English.
 
