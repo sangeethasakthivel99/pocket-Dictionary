@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 
 class AppTheme {
 
@@ -9,7 +8,7 @@ class AppTheme {
   );
 
   static final dark = ThemeData.dark().copyWith(
-    backgroundColor: blackBackground,
+    backgroundColor: Colors.black,
     colorScheme: darkColorScheme
   );
 
@@ -34,7 +33,7 @@ class AppTheme {
     primaryVariant: Color(0xFF640AFF),
     secondary: Color(0xFF03DAC5),
     secondaryVariant: Color(0xFF0AE1C5),
-    background: black,
+    background: Colors.black,
     surface: Color(0xFFFAFBFB),
     onBackground: Colors.black,
     error: Colors.red,
@@ -42,7 +41,7 @@ class AppTheme {
     onPrimary: Colors.black,
     onSecondary: Color(0xFF322942),
     onSurface: Color(0xFF241E30),
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
   );
 
   static const Color black = Color(0xff000000);
@@ -50,5 +49,6 @@ class AppTheme {
   static const Color primaryColor = Color(0xff34D178);
   static const Color blackBackground = Color(0xff1E1D2A);
   static const Color gray = Color(0xff7F8A94);
+  static const Color blackTextColor = Color(0xff1E1D2A);
 
 }
