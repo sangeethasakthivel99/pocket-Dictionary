@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:pocket_dictionary/core/imageutil.dart';
 
-class SplashController {
+class SplashController extends GetxController {
 
-  String getSplashLogo() {
-    return ImageUtil.splashLogoLight;
+  String getSplashLogo(BuildContext context) {
+    return context.isDarkMode ? ImageUtil.splashLogoDark : ImageUtil.splashLogoLight;
   }
 }
