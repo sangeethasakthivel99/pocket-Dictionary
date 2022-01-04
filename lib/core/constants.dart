@@ -9,4 +9,7 @@ class Constants {
   static const authorName = "Sangeetha Sakthivel";
   static const developedBy = "DEVELOPED BY";
 
+  //home
+  static const recentSearches = "RECENT SEARCHES";
+
 }

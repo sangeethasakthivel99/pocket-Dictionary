@@ -48,7 +48,10 @@ class AppTheme {
   static const Color white = Color(0xffffffff);
   static const Color primaryColor = Color(0xff34D178);
   static const Color blackBackground = Color(0xff1E1D2A);
+  static const Color whiteBackground = Color(0xffF1FFF1);
   static const Color gray = Color(0xff7F8A94);
   static const Color blackTextColor = Color(0xff1E1D2A);
+  static const Color borderColor = Color(0xff2B2A37);
+  static const Color dividerColor = Color(0xff313340);
 
 }

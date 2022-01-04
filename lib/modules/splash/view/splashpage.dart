@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pocket_dictionary/core/apptheme.dart';
 import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/style.dart';
 import 'package:pocket_dictionary/modules/splash/controller/splashcontroller.dart';
@@ -15,7 +14,7 @@ class SplashPage extends StatelessWidget {
     var controller = Get.find<SplashController>();
 
     return Scaffold(
-      backgroundColor: context.isDarkMode? AppTheme.black : AppTheme.white,
+      backgroundColor: controller.getBackgroundColor(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
