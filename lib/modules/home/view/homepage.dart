@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pocket_dictionary/core/apptheme.dart';
 import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/imageutil.dart';
 import 'package:pocket_dictionary/core/style.dart';
@@ -20,14 +21,29 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var controller = Get.find<HomeController>();
     return Scaffold(
+      backgroundColor: context.isDarkMode ? AppTheme.black : AppTheme.white,
+      appBar: AppBar(
+        backgroundColor: context.isDarkMode ? AppTheme.black : AppTheme.white,
+        title: context.isDarkMode
+            ? SvgPicture.asset(ImageUtil.appLogoDark)
+            : SvgPicture.asset(ImageUtil.appLogoLight),
+        centerTitle: true,
+        elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                CupertinoIcons.bookmark_fill,
+                color: AppTheme.primaryColor,
+              ))
+        ],
+      ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                SvgPicture.asset(ImageUtil.appLogoDark),
-                const SizedBox(height: 40),
                 Form(
                   key: controller.formKey,
                   child: TextFormField(
@@ -37,26 +53,38 @@ class _HomePageState extends State<HomePage> {
                       return controller.validateSearchField();
                     },
                     decoration: Style.roundedTextFieldStyle(
-                        "Search",
-                        "Search",
-                        CupertinoIcons.search),
+                        context, Constants.search, Constants.search, CupertinoIcons.search),
                   ),
                 ),
                 const SizedBox(height: 40),
                 Align(
-                  alignment: Alignment.topLeft,
+                    alignment: Alignment.topLeft,
                     child: Text(
-                        Constants.recentSearches,
+                      Constants.recentSearches,
                       style: Style.primaryTitleStyle(),
-                    )
-                ),
+                    )),
                 const SizedBox(height: 20),
                 ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 5,
+                    shrinkWrap: true,
+                    itemCount: 5,
                     itemBuilder: (BuildContext context, int index) {
-                      return RecentSearchesItemPage();
-                    }
+                      return const RecentSearchesItemPage();
+                    }),
+                const SizedBox(height: 20),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 160,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                        color: AppTheme.tagColor,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Center(
+                        child: Text(
+                      Constants.viewAll,
+                      style: Style.greenTextStyle(),
+                    )),
+                  ),
                 )
               ],
             ),

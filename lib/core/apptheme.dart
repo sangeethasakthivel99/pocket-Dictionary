@@ -53,5 +53,6 @@ class AppTheme {
   static const Color blackTextColor = Color(0xff1E1D2A);
   static const Color borderColor = Color(0xff2B2A37);
   static const Color dividerColor = Color(0xff313340);
+  static const Color tagColor = Color(0x2234D178);
 
 }

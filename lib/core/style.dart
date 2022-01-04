@@ -34,7 +34,14 @@ class Style {
       fontWeight: FontWeight.w400
   );
 
+  static TextStyle greenTextStyle() =>  const TextStyle(
+      color: AppTheme.primaryColor,
+      fontSize: 14,
+      fontWeight: FontWeight.w400
+  );
+
   static InputDecoration roundedTextFieldStyle(
+      BuildContext context,
       String label,
       String hint,
       IconData icon) =>
@@ -42,7 +49,7 @@ class Style {
           contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
           labelText: label,
           filled: true,
-          fillColor: AppTheme.borderColor,
+          fillColor: context.isDarkMode? AppTheme.borderColor : AppTheme.whiteBackground,
           prefixIcon:  Padding(
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
@@ -62,7 +69,7 @@ class Style {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
             borderSide: const BorderSide(
-              color: AppTheme.borderColor,
+              color: AppTheme.primaryColor,
             ),
           ),
           errorBorder: OutlineInputBorder(
@@ -74,7 +81,7 @@ class Style {
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
             borderSide: const BorderSide(
-              color: AppTheme.primaryColor,
+              color: Colors.red,
             ),
           )
       );

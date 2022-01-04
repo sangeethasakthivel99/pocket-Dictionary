@@ -11,5 +11,7 @@ class Constants {
 
   //home
   static const recentSearches = "RECENT SEARCHES";
+  static const viewAll = "VIEW ALL";
+  static const search = "Search";
 
 }
