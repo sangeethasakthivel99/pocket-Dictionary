@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pocket_dictionary/modules/home/binding/homebinding.dart';
 import 'package:pocket_dictionary/modules/home/view/homepage.dart';
+import 'package:pocket_dictionary/modules/searchhistory/binding/searchhistorybinding.dart';
+import 'package:pocket_dictionary/modules/searchhistory/view/searchhistorypage.dart';
 import 'package:pocket_dictionary/modules/splash/view/splashpage.dart';
 import 'core/apptheme.dart';
 import 'core/routes.dart';
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: Routes.splash, page: () => const SplashPage(), binding: SplashBinding()),
         GetPage(name: Routes.home, page: () => const HomePage(), binding: HomeBinding()),
+        GetPage(name: Routes.searchHistory, page: () => const SearchHistoryPage(), binding: SearchHistoryBinding()),
       ],
     );
   }

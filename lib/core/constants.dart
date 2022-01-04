@@ -14,4 +14,6 @@ class Constants {
   static const viewAll = "VIEW ALL";
   static const search = "Search";
 
+  //search History
+  static const searchHistory = "SEARCH HISTORY";
 }

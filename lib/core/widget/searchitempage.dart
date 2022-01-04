@@ -3,8 +3,8 @@ import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:pocket_dictionary/core/apptheme.dart';
 import 'package:pocket_dictionary/core/style.dart';
 
-class RecentSearchesItemPage extends StatelessWidget {
-  const RecentSearchesItemPage({Key? key}) : super(key: key);
+class SearchItemPage extends StatelessWidget {
+  const SearchItemPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

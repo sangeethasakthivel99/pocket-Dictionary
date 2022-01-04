@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 import 'package:pocket_dictionary/core/apptheme.dart';
 import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/imageutil.dart';
+import 'package:pocket_dictionary/core/routes.dart';
 import 'package:pocket_dictionary/core/style.dart';
 import 'package:pocket_dictionary/modules/home/controller/homecontroller.dart';
-import 'package:pocket_dictionary/modules/home/view/recentsearchpage.dart';
+import 'package:pocket_dictionary/core/widget/searchitempage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -68,11 +69,13 @@ class _HomePageState extends State<HomePage> {
                     shrinkWrap: true,
                     itemCount: 5,
                     itemBuilder: (BuildContext context, int index) {
-                      return const RecentSearchesItemPage();
+                      return const SearchItemPage();
                     }),
                 const SizedBox(height: 20),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.searchHistory);
+                  },
                   child: Container(
                     width: 160,
                     height: 40,
