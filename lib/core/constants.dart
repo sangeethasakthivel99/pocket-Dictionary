@@ -16,4 +16,7 @@ class Constants {
 
   //search History
   static const searchHistory = "SEARCH HISTORY";
+
+  //Bookmark
+  static const bookmarks = "BOOKMARKS";
 }

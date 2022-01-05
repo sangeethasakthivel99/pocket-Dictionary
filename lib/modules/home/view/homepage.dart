@@ -32,7 +32,9 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.bookmark);
+              },
               icon: const Icon(
                 CupertinoIcons.bookmark_fill,
                 color: AppTheme.primaryColor,

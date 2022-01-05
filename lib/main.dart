@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pocket_dictionary/modules/bookmark/binding/bookmarkbinding.dart';
+import 'package:pocket_dictionary/modules/bookmark/view/bookmarkpage.dart';
 import 'package:pocket_dictionary/modules/home/binding/homebinding.dart';
 import 'package:pocket_dictionary/modules/home/view/homepage.dart';
 import 'package:pocket_dictionary/modules/searchhistory/binding/searchhistorybinding.dart';
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.splash, page: () => const SplashPage(), binding: SplashBinding()),
         GetPage(name: Routes.home, page: () => const HomePage(), binding: HomeBinding()),
         GetPage(name: Routes.searchHistory, page: () => const SearchHistoryPage(), binding: SearchHistoryBinding()),
+        GetPage(name: Routes.bookmark, page: () => const BookmarkPage(), binding: BookmarkBinding()),
       ],
     );
   }
