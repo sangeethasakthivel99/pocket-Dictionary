@@ -17,6 +17,3 @@ A simple flutter app where we can get the meaning, pronunciation, and Synonym fo
 
 ### Back-end
 - **Dictionary API** 
-
-### Local db
-- **Hive
