@@ -38,6 +38,8 @@ dependencies:
   intl: ^0.17.0
   get_storage: ^2.0.3
   flutter_svg: ^0.23.0+1
+  http: ^0.13.4
+  connectivity: ^3.0.6
 
 dev_dependencies:
   flutter_test:

@@ -6,6 +6,8 @@ import 'package:pocket_dictionary/modules/home/binding/homebinding.dart';
 import 'package:pocket_dictionary/modules/home/view/homepage.dart';
 import 'package:pocket_dictionary/modules/searchhistory/binding/searchhistorybinding.dart';
 import 'package:pocket_dictionary/modules/searchhistory/view/searchhistorypage.dart';
+import 'package:pocket_dictionary/modules/searchresult/binding/searchresultbinding.dart';
+import 'package:pocket_dictionary/modules/searchresult/view/searchresultpage.dart';
 import 'package:pocket_dictionary/modules/splash/view/splashpage.dart';
 import 'core/apptheme.dart';
 import 'core/routes.dart';
@@ -29,10 +31,26 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.splash,
       getPages: [
-        GetPage(name: Routes.splash, page: () => const SplashPage(), binding: SplashBinding()),
-        GetPage(name: Routes.home, page: () => const HomePage(), binding: HomeBinding()),
-        GetPage(name: Routes.searchHistory, page: () => const SearchHistoryPage(), binding: SearchHistoryBinding()),
-        GetPage(name: Routes.bookmark, page: () => const BookmarkPage(), binding: BookmarkBinding()),
+        GetPage(
+            name: Routes.splash,
+            page: () => const SplashPage(),
+            binding: SplashBinding()),
+        GetPage(
+            name: Routes.home,
+            page: () => const HomePage(),
+            binding: HomeBinding()),
+        GetPage(
+            name: Routes.searchHistory,
+            page: () => const SearchHistoryPage(),
+            binding: SearchHistoryBinding()),
+        GetPage(
+            name: Routes.bookmark,
+            page: () => const BookmarkPage(),
+            binding: BookmarkBinding()),
+        GetPage(
+            name: Routes.searchResult,
+            page: () => const SearchResultPage(),
+            binding: SearchResultBinding()),
       ],
     );
   }

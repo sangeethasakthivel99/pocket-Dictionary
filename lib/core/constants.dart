@@ -1,5 +1,13 @@
 class Constants {
-  static const baseUrl = "https://api.dictionaryapi.dev";
+  static const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+
+  static const emptyString = "";
+
+  //States
+  static const loading = "loading";
+  static const success = "success";
+  static const error = "error";
+  static const noInternet = "noInternet";
 
   static const appTheme = "appTheme";
   static const darkTheme = "darkTheme";

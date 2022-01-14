@@ -7,12 +7,14 @@ import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/imageutil.dart';
 import 'package:pocket_dictionary/core/style.dart';
 import 'package:pocket_dictionary/core/widget/searchitempage.dart';
+import 'package:pocket_dictionary/modules/searchresult/controller/searchresultcontroller.dart';
 
 class SearchHistoryPage extends StatelessWidget {
   const SearchHistoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<SearchResultController>();
     return Scaffold(
       backgroundColor: context.isDarkMode ? AppTheme.black : AppTheme.white,
       appBar: AppBar(
