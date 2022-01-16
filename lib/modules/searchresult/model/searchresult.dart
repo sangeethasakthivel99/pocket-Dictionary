@@ -68,7 +68,7 @@ class Definition {
   Map<String, dynamic> toJson() => {
     "definition": definition,
     "example": example,
-    "synonyms": synonyms == null ? null : List<dynamic>.from(synonyms.map((x) => x)),
+    "synonyms": synonyms == null ? null : List<dynamic>.from(synonyms!.map((x) => x)),
   };
 }
 
