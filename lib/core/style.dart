@@ -12,13 +12,19 @@ class Style {
 
   static TextStyle boldTextStyle(BuildContext context) =>  TextStyle(
       color: context.isDarkMode? AppTheme.white : AppTheme.blackTextColor,
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.w700
   );
 
   static TextStyle primaryTitleStyle() =>  const TextStyle(
       color: AppTheme.primaryColor,
       fontSize: 16,
+      fontWeight: FontWeight.w700
+  );
+
+  static TextStyle headingStyle() =>  const TextStyle(
+      color: AppTheme.primaryColor,
+      fontSize: 22,
       fontWeight: FontWeight.w700
   );
 

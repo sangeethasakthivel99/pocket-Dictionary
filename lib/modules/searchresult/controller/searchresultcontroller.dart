@@ -31,9 +31,10 @@ class SearchResultController extends GetxController {
     (Connectivity().checkConnectivity()).then((connectivityResult) {
       if(connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
         isNetworkConnected.value = true;
+      } else {
+        isNetworkConnected.value = false;
       }
     });
-    isNetworkConnected.value = false;
   }
 
   fetchResult() async {
@@ -47,6 +48,7 @@ class SearchResultController extends GetxController {
             responseStatus: Constants.success,
             respCode: 200,
             respMessage: "success");
+        print(result.response);
       } else {
         searchResponse.value = ResponseInfo(
             responseStatus: Constants.error,
