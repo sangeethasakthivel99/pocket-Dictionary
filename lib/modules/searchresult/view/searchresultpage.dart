@@ -32,6 +32,7 @@ class SearchResultPage extends StatelessWidget {
         elevation: 0,
       ),
       body: Obx(() {
+        print(controller.searchResponse.value.responseStatus);
         if (controller.searchResponse.value.responseStatus ==
             Constants.loading) {
           return const Center(
@@ -41,6 +42,7 @@ class SearchResultPage extends StatelessWidget {
           ));
         } else if (controller.searchResponse.value.responseStatus ==
             Constants.success) {
+          print("Entered HERE");
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(22.0),
@@ -52,26 +54,26 @@ class SearchResultPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(controller.searchResult[0].word,
+                          Text(controller.searchResult[0].word ?? "",
                               style: Style.headingStyle()),
                           const SizedBox(height: 5),
-                          Text(controller.searchResult[0].phonetics[0].text,
+                          Text(
+                              controller.searchResult[0].phonetics[0].text,
                               style: Style.secondaryTextStyle(context))
                         ],
                       ),
                       const Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        child: SvgPicture.asset(ImageUtil.speaker),
-                      )
+                      IconButton(
+                          onPressed: () {},
+                          icon: SvgPicture.asset(ImageUtil.speaker)),
                     ],
                   ),
                   const SizedBox(height: 10),
                   ListView.builder(
                       shrinkWrap: true,
-                      itemCount: 5,
+                      itemCount: controller.searchResult[0].meanings?.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return const MeaningItem();
+                        return MeaningItem(meaning: controller.searchResult[0].meanings![index],);
                       })
                 ],
               ),

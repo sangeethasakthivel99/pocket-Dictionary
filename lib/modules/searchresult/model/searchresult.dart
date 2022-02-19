@@ -11,21 +11,35 @@ class SearchResult {
     required this.meanings,
   });
 
-  String word;
-  List<Phonetic> phonetics;
-  List<Meaning> meanings;
+  String? word;
+  late List<Phonetic> phonetics;
+  List<Meaning>? meanings;
 
-  factory SearchResult.fromJson(Map<String, dynamic> json) => SearchResult(
-    word: json["word"],
-    phonetics: List<Phonetic>.from(json["phonetics"].map((x) => Phonetic.fromJson(x))),
-    meanings: List<Meaning>.from(json["meanings"].map((x) => Meaning.fromJson(x))),
-  );
+  SearchResult.fromJson(dynamic json) {
+    word = json['word'];
+    if (json['phonetics'] != null) {
+      phonetics = [];
+      json['phonetics'].forEach((v) {
+        phonetics.add(Phonetic.fromJson(v));
+      });
+    }
+    if (json['meanings'] != null) {
+      meanings = [];
+      json['meanings'].forEach((v) {
+        meanings?.add(Meaning.fromJson(v));
+      });
+    }
+  }
 
-  Map<String, dynamic> toJson() => {
-    "word": word,
-    "phonetics": List<dynamic>.from(phonetics.map((x) => x.toJson())),
-    "meanings": List<dynamic>.from(meanings.map((x) => x.toJson())),
-  };
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['word'] = word;
+    map['phonetics'] = phonetics.map((v) => v.toJson()).toList();
+    if (meanings != null) {
+      map['meanings'] = meanings?.map((v) => v.toJson()).toList();
+    }
+    return map;
+  }
 }
 
 class Meaning {
@@ -34,18 +48,27 @@ class Meaning {
     required this.definitions,
   });
 
-  String partOfSpeech;
-  List<Definition> definitions;
+  String? partOfSpeech;
+  List<Definition>? definitions;
 
-  factory Meaning.fromJson(Map<String, dynamic> json) => Meaning(
-    partOfSpeech: json["partOfSpeech"],
-    definitions: List<Definition>.from(json["definitions"].map((x) => Definition.fromJson(x))),
-  );
+  Meaning.fromJson(dynamic json) {
+    partOfSpeech = json['partOfSpeech'];
+    if (json['definitions'] != null) {
+      definitions = [];
+      json['definitions'].forEach((v) {
+        definitions?.add(Definition.fromJson(v));
+      });
+    }
+  }
 
-  Map<String, dynamic> toJson() => {
-    "partOfSpeech": partOfSpeech,
-    "definitions": List<dynamic>.from(definitions.map((x) => x.toJson())),
-  };
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['partOfSpeech'] = partOfSpeech;
+    if (definitions != null) {
+      map['definitions'] = definitions?.map((v) => v.toJson()).toList();
+    }
+    return map;
+  }
 }
 
 class Definition {
@@ -55,8 +78,8 @@ class Definition {
     required this.synonyms,
   });
 
-  String definition;
-  String example;
+  String? definition;
+  String? example;
   List<String>? synonyms;
 
   factory Definition.fromJson(Map<String, dynamic> json) => Definition(

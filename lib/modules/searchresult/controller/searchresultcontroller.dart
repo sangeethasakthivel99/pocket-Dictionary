@@ -48,14 +48,15 @@ class SearchResultController extends GetxController {
             responseStatus: Constants.success,
             respCode: 200,
             respMessage: "success");
-        print(result.response);
       } else {
+        print(result.error);
         searchResponse.value = ResponseInfo(
             responseStatus: Constants.error,
             respCode: 400,
             respMessage: "Unable to find the meaning for ${searchKey.value}");
       }
     } catch(e) {
+      print(e);
       searchResponse.value = ResponseInfo(
           responseStatus: Constants.error,
           respCode: 400,
