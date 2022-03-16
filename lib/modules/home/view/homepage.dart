@@ -47,16 +47,51 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                Form(
-                  key: controller.formKey,
-                  child: TextFormField(
-                    controller: controller.searchTextController,
-                    autofocus: false,
-                    validator: (value) {
-                      return controller.validateSearchField();
-                    },
-                    decoration: Style.roundedTextFieldStyle(
-                        context, Constants.search, Constants.search, CupertinoIcons.search),
+                Obx(
+                  () => Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Form(
+                          key: controller.formKey,
+                          child: TextFormField(
+                            controller: controller.searchTextController,
+                            autofocus: false,
+                            onChanged: (value) {
+                              if (value.isEmpty) {
+                                controller.isSearchEnabled.value = false;
+                              }
+                              controller.isSearchEnabled.value = true;
+                            },
+                            validator: (value) {
+                              return controller.validateSearchField();
+                            },
+                            decoration: Style.roundedTextFieldStyle(
+                                context,
+                                Constants.search,
+                                Constants.search,
+                                CupertinoIcons.search),
+                          ),
+                        ),
+                      ),
+                      Visibility(
+                        visible: controller.isSearchEnabled.value && controller.searchTextController.text.isNotEmpty,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: IconButton(
+                            icon: const Icon(
+                              CupertinoIcons.arrow_right_circle_fill,
+                              color: AppTheme.primaryColor,
+                            ),
+                            onPressed: () {
+                              Get.toNamed(Routes.searchResult,
+                                  arguments:
+                                      controller.searchTextController.text);
+                            },
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 const SizedBox(height: 40),

@@ -48,7 +48,7 @@ class MeaningItem extends StatelessWidget {
                   ],
                 ),
               );
-            })
+            }),
       ],
     );
   }

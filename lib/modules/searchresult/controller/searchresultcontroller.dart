@@ -12,6 +12,7 @@ class SearchResultController extends GetxController {
   var searchRepo = Get.find<SearchRepo>();
   var searchResult = List<SearchResult>.empty(growable: true).obs;
   var isNetworkConnected = true.obs;
+  var isBookmarked = false.obs;
 
   @override
   void onInit() {
@@ -41,22 +42,21 @@ class SearchResultController extends GetxController {
     searchResponse.value = ResponseInfo(responseStatus: Constants.loading);
     var result = await searchRepo.getResult(searchKey.value);
     try {
+      print(result.response);
       if(result.error == null) {
-        var response = searchResponseFromJson(result.response);
+        var response = result.response;
         searchResult.value = response;
         searchResponse.value = ResponseInfo(
             responseStatus: Constants.success,
             respCode: 200,
             respMessage: "success");
       } else {
-        print(result.error);
         searchResponse.value = ResponseInfo(
             responseStatus: Constants.error,
             respCode: 400,
             respMessage: "Unable to find the meaning for ${searchKey.value}");
       }
     } catch(e) {
-      print(e);
       searchResponse.value = ResponseInfo(
           responseStatus: Constants.error,
           respCode: 400,

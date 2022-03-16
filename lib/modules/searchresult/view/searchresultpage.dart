@@ -33,7 +33,6 @@ class SearchResultPage extends StatelessWidget {
         elevation: 0,
       ),
       body: Obx(() {
-        print(controller.searchResponse.value.responseStatus);
         if (controller.searchResponse.value.responseStatus ==
             Constants.loading) {
           return const Center(
@@ -42,8 +41,7 @@ class SearchResultPage extends StatelessWidget {
             size: 60,
           ));
         } else if (controller.searchResponse.value.responseStatus ==
-            Constants.noInternet) {
-          print("Entered HERE");
+            Constants.success) {
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(22.0),
@@ -58,15 +56,21 @@ class SearchResultPage extends StatelessWidget {
                           Text(controller.searchResult[0].word ?? "",
                               style: Style.headingStyle()),
                           const SizedBox(height: 5),
-                          Text(
-                              controller.searchResult[0].phonetics[0].text,
+                          Text(controller.searchResult[0].phonetics[0].text,
                               style: Style.secondaryTextStyle(context))
                         ],
                       ),
                       const Spacer(),
-                      IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(ImageUtil.speaker)),
+                      Obx(
+                        () => IconButton(
+                            onPressed: () {
+                              controller.isBookmarked.toggle();
+                            },
+                            icon: (controller.isBookmarked.value)
+                                ? const Icon(Icons.bookmark,
+                                    color: AppTheme.primaryColor)
+                                : const Icon(Icons.bookmark_outline_outlined)),
+                      ),
                       IconButton(
                           onPressed: () {},
                           icon: SvgPicture.asset(ImageUtil.speaker)),
@@ -77,14 +81,16 @@ class SearchResultPage extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: controller.searchResult[0].meanings?.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return MeaningItem(meaning: controller.searchResult[0].meanings![index],);
+                        return MeaningItem(
+                          meaning: controller.searchResult[0].meanings![index],
+                        );
                       })
                 ],
               ),
             ),
           );
         } else if (controller.searchResponse.value.responseStatus ==
-            Constants.success) {
+            Constants.loading) {
           return const NoInternetPage();
         }
         return Container();

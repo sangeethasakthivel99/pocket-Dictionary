@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController searchTextController;
+  RxBool isSearchEnabled = false.obs;
 
   @override
   void onInit() {
