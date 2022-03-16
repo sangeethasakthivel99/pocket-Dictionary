@@ -7,6 +7,7 @@ import 'package:pocket_dictionary/core/apptheme.dart';
 import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/imageutil.dart';
 import 'package:pocket_dictionary/core/style.dart';
+import 'package:pocket_dictionary/core/widget/nointernetpage.dart';
 import 'package:pocket_dictionary/modules/searchresult/controller/searchresultcontroller.dart';
 import 'package:pocket_dictionary/modules/searchresult/view/meaningitem.dart';
 
@@ -41,7 +42,7 @@ class SearchResultPage extends StatelessWidget {
             size: 60,
           ));
         } else if (controller.searchResponse.value.responseStatus ==
-            Constants.success) {
+            Constants.noInternet) {
           print("Entered HERE");
           return SingleChildScrollView(
             child: Padding(
@@ -66,6 +67,9 @@ class SearchResultPage extends StatelessWidget {
                       IconButton(
                           onPressed: () {},
                           icon: SvgPicture.asset(ImageUtil.speaker)),
+                      IconButton(
+                          onPressed: () {},
+                          icon: SvgPicture.asset(ImageUtil.speaker)),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -79,6 +83,9 @@ class SearchResultPage extends StatelessWidget {
               ),
             ),
           );
+        } else if (controller.searchResponse.value.responseStatus ==
+            Constants.success) {
+          return const NoInternetPage();
         }
         return Container();
       }),
