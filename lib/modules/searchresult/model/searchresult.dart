@@ -101,7 +101,7 @@ class Phonetic {
     required this.audio,
   });
 
-  String text;
+  String? text;
   String audio;
 
   factory Phonetic.fromJson(Map<String, dynamic> json) => Phonetic(

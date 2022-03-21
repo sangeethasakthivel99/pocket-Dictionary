@@ -56,7 +56,7 @@ class SearchResultPage extends StatelessWidget {
                           Text(controller.searchResult[0].word ?? "",
                               style: Style.headingStyle()),
                           const SizedBox(height: 5),
-                          Text(controller.searchResult[0].phonetics[0].text,
+                          Text(controller.searchResult[0].phonetics[0].text ?? controller.searchResult[0].word ?? "",
                               style: Style.secondaryTextStyle(context))
                         ],
                       ),
@@ -76,7 +76,9 @@ class SearchResultPage extends StatelessWidget {
                                 : const Icon(Icons.bookmark_outline_outlined)),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.playPronunciation();
+                          },
                           icon: SvgPicture.asset(ImageUtil.speaker)),
                     ],
                   ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/db/SearchResultEntity.dart';
@@ -56,33 +57,36 @@ class SearchResultController extends GetxController {
     if(await isAvailableInDB()) {
       var key = searchKey.toLowerCase();
       List<SearchResultEntity> result = await PocketDictionaryDatabase.instance.getBookmark(key);
+      searchResult.clear();
       searchResult.addAll(searchResponseFromJson(result[0].data ?? ""));
       searchResponse.value = ResponseInfo(
           responseStatus: Constants.success,
           respCode: 200,
           respMessage: "success");
-    }
-    var result = await searchRepo.getResult(searchKey.value);
-    try {
-      if(result.error == null) {
-        var response = result.response;
-        searchResult.value = response;
-        saveSearchResultToDb();
-        searchResponse.value = ResponseInfo(
-            responseStatus: Constants.success,
-            respCode: 200,
-            respMessage: "success");
-      } else {
+    } else {
+      var result = await searchRepo.getResult(searchKey.value);
+      try {
+        if(result.error == null) {
+          var response = result.response;
+          searchResult.clear();
+          searchResult.value = response;
+          saveSearchResultToDb();
+          searchResponse.value = ResponseInfo(
+              responseStatus: Constants.success,
+              respCode: 200,
+              respMessage: "success");
+        } else {
+          searchResponse.value = ResponseInfo(
+              responseStatus: Constants.error,
+              respCode: 400,
+              respMessage: "Unable to find the meaning for ${searchKey.value}");
+        }
+      } catch(e) {
         searchResponse.value = ResponseInfo(
             responseStatus: Constants.error,
             respCode: 400,
             respMessage: "Unable to find the meaning for ${searchKey.value}");
       }
-    } catch(e) {
-      searchResponse.value = ResponseInfo(
-          responseStatus: Constants.error,
-          respCode: 400,
-          respMessage: "Unable to find the meaning for ${searchKey.value}");
     }
   }
 
@@ -115,6 +119,13 @@ class SearchResultController extends GetxController {
     var data = await PocketDictionaryDatabase.instance.removeFromBookmark(key);
     if(data == 1) {
       isBookmarked.value = false;
+    }
+  }
+
+  playPronunciation() async {
+    AudioPlayer audioPlayer = AudioPlayer();
+    if(searchResult.isNotEmpty) {
+      await audioPlayer.play(searchResult[0].phonetics[0].audio);
     }
   }
 }
