@@ -102,28 +102,33 @@ class _HomePageState extends State<HomePage> {
                       style: Style.primaryTitleStyle(),
                     )),
                 const SizedBox(height: 20),
-                ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (BuildContext context, int index) {
-                      return const SearchItemPage();
-                    }),
+                Obx(() => ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: (controller.searchHistory.length > 5) ? 5 : controller.searchHistory.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return SearchItemPage(searchResult: controller.searchHistory[index]);
+                      }),
+                ),
                 const SizedBox(height: 20),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(Routes.searchHistory);
-                  },
-                  child: Container(
-                    width: 160,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        color: AppTheme.tagColor,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Center(
-                        child: Text(
-                      Constants.viewAll,
-                      style: Style.greenTextStyle(),
-                    )),
+                Obx(() => Visibility(
+                    visible: controller.isViewAllEnabled.value,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed(Routes.searchHistory);
+                      },
+                      child: Container(
+                        width: 160,
+                        height: 40,
+                        decoration: const BoxDecoration(
+                            color: AppTheme.tagColor,
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        child: Center(
+                            child: Text(
+                          Constants.viewAll,
+                          style: Style.greenTextStyle(),
+                        )),
+                      ),
+                    ),
                   ),
                 )
               ],

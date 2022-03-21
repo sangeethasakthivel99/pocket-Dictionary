@@ -11,11 +11,9 @@ import 'package:pocket_dictionary/modules/searchresult/view/searchresultpage.dar
 import 'package:pocket_dictionary/modules/splash/view/splashpage.dart';
 import 'core/apptheme.dart';
 import 'core/routes.dart';
-import 'core/storageservice.dart';
 import 'modules/splash/binding/splashbinding.dart';
 
 void main() {
-  initialConfig();
   runApp(const MyApp());
 }
 
@@ -54,8 +52,4 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
-}
-
-Future<void> initialConfig() async {
-  await Get.putAsync(() => StorageService().init());
 }

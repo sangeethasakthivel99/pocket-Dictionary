@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/service/apiresponse.dart';
 import 'package:http/http.dart' as http;
-
 import '../model/searchresult.dart';
 
 class SearchRepo extends GetConnect {
@@ -17,7 +16,6 @@ class SearchRepo extends GetConnect {
   Future<ApiResponse> getResult(String key) async {
     try {
       var result = await http.get(Uri.parse(Constants.baseUrl+key));
-      print(result.body);
       return ApiResponse.success(searchResponseFromJson(result.body));
     } on SocketException {
       return ApiResponse.error("No Internet");

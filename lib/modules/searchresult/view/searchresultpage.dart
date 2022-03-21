@@ -63,8 +63,12 @@ class SearchResultPage extends StatelessWidget {
                       const Spacer(),
                       Obx(
                         () => IconButton(
-                            onPressed: () {
-                              controller.isBookmarked.toggle();
+                            onPressed: () async{
+                              if(controller.isBookmarked.value) {
+                                controller.removeFromBookmark();
+                              } else {
+                                controller.addToBookmark();
+                              }
                             },
                             icon: (controller.isBookmarked.value)
                                 ? const Icon(Icons.bookmark,
@@ -79,6 +83,7 @@ class SearchResultPage extends StatelessWidget {
                   const SizedBox(height: 10),
                   ListView.builder(
                       shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
                       itemCount: controller.searchResult[0].meanings?.length,
                       itemBuilder: (BuildContext context, int index) {
                         return MeaningItem(
