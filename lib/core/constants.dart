@@ -8,6 +8,7 @@ class Constants {
   static const success = "success";
   static const error = "error";
   static const noInternet = "noInternet";
+  static const empty = "empty";
 
   static const appTheme = "appTheme";
   static const darkTheme = "darkTheme";

@@ -8,6 +8,7 @@ import 'package:pocket_dictionary/core/constants.dart';
 import 'package:pocket_dictionary/core/imageutil.dart';
 import 'package:pocket_dictionary/core/style.dart';
 import 'package:pocket_dictionary/core/widget/searchitempage.dart';
+import '../../../core/widget/emptywidget.dart';
 import '../controller/bookmarkcontroller.dart';
 
 class BookmarkPage extends StatelessWidget {
@@ -66,7 +67,10 @@ class BookmarkPage extends StatelessWidget {
                 ),
               ),
             );
-          } else {
+          } else if(controller.bookmarkResponse.value.responseStatus ==
+              Constants.empty) {
+            return const EmptyWidget(imagePath: ImageUtil.emptySearch, emptyTitle: "No Words Bookmarked");
+        } else {
             return Container();
           }
         }));

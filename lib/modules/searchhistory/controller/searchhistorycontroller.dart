@@ -21,6 +21,7 @@ class SearchHistoryController extends GetxController {
       for (var element in data) {
         searchHistory.addAll(searchResponseFromJson(element.data ?? ""));
       }
+      searchHistory.value = searchHistory.reversed.toList();
       searchHistoryResponse.value = ResponseInfo(responseStatus: Constants.success);
     } catch(e) {
       searchHistoryResponse.value = ResponseInfo(responseStatus: Constants.error);
